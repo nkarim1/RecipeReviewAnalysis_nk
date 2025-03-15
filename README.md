@@ -48,7 +48,12 @@ The cleaned up data left a dataframe with 83782 rows and 20 columns
 ### Univariate Analysis
 The univariate analysis looked at the distribution of ratings, giving a sense of how often certain ratings were give. The plot reveals that the higher the rating, the most often it was given, with 5 star ratings given substantially more often than other ratings.
 
-***(insert rating distribution graph)***
+<iframe
+  src="assets/rating_dist.html"
+  width="400"
+  height="400"
+  frameborder="0"
+></iframe>
 
 
 ### Bivariate Analysis
@@ -64,11 +69,19 @@ The bivariate analysis looked at the average rating based on the number of minut
 ## Aggregates
 The pivot table below looks at the average rating for different categories of cooking times. For the most part, recipes with lower cooking times tend to have higher ratings. 
 
-***(insert pivot table)***
+<iframe
+  src="assets/rating_vs_time_categories.html"
+  width="400"
+  height="400"
+  frameborder="0"
+></iframe>
 
 
 ## Data Missingness
 Analyzing the data set, I concluded that it is very likely that there is NMAR for the review column. This is due to the fact that not everyone will leave a review; in fact, usually users with more extreme experiences will leave a review.
+
+
+
 
 ## Hypothesis Testing
 A permutation test was used to determine whether there was a relationship between cooking time and the average rating. 
