@@ -80,8 +80,27 @@ The pivot table below looks at the average rating for different categories of co
 ## Data Missingness
 Analyzing the data set, I concluded that it is very likely that there is NMAR for the review column. This is due to the fact that not everyone will leave a review; in fact, usually users with more extreme experiences will leave a review.
 
+I first looked at the missingness of `review` and whether it depends on `rating`. 
+Null Hypothesis: The missingness of reviews does not depend on ratings.
+Alternate Hypothesis: The missingness of reviews does depend on ratings.
+<iframe
+  src="assets/55.html"
+  width="400"
+  height="400"
+  frameborder="0"
+></iframe>
+Our p-value is 0.001, which is less than 0.05, so we can reject the null hypothesis and assume that the missingness of review does depend on rating.
 
-
+I then looked at the missingness of `review` and whether it depends on `recipe_id`. 
+Null Hypothesis: The missingness of reviews does not depend on recipe id.
+Alternate Hypothesis: The missingness of reviews does depend on recipe id.
+<iframe
+  src="assets/66.html"
+  width="400"
+  height="400"
+  frameborder="0"
+></iframe>
+Our p-value is 0.175, which is grater than than 0.05, so we fail to reject the null hypothesis and assume that the missingness of review does not depend on its id.
 
 ## Hypothesis Testing
 A permutation test was used to determine whether there was a relationship between cooking time and the average rating. 
@@ -94,8 +113,6 @@ A permutation test was used to determine whether there was a relationship betwee
 
 The recipes were split into two groups: those with a "shorter" cooking time, taking less than or equal to 30 minutes, and those with a "longer" cooking time, taking over 30 minutes. The permutation. The difference in the average for wach group was calculated. Then the minutes column was randomly shuffled, and the difference in averages was calculated again with the new shuffled data. This process was repeated for 1000 simulations.
 
-***insert chart***
-
 A p-value was calculated by looking at the proportion that are as or more extreme as the observed value. I got a **p-value of 0.0001**
 
 since the p-value is less than a significance value of 0.05, the **null hypothesis is rejected**. There is a difference in average ratings with shorter and longer cook times, meaning that cook time may affect recipe ratings. 
@@ -103,7 +120,7 @@ since the p-value is less than a significance value of 0.05, the **null hypothes
 ## Prediction Problem
 I also wanted to see if I could predict the average rating that a recipe would get based on overall complexity. The cooking time is one characteristic of complexity, but the number of actual steps can also contribute to how complicated a recipe is. 
 
-This would be a **regression problem** because
+This would be a **regression problem**.
 
 I would use `average_rating` as a response variable because it corresponds to a user's satisfaction after trying a recipe, and is possibly affected by the cooking time.
 
@@ -119,9 +136,8 @@ Our final model used `Cooking Time` and `n_ingredients` as the features, which a
 
 `Cooking Time` was used because looking at our hypothesis model, there is a relationship between cooking time and average rating, which can help predict rating.
 
-`n_ingredients` was used because, similarily, I assume there is a relationship between the number of ingredients and the rating.
+`n_ingredients` and `n_steps` was used because, similarily, I assume there is a relationship between the number of ingredients, number of steps, and the rating.
 
 
-I used a RMSE to asses the model's accuracy because RMSE looks at the average discrepancy between predicted and actual ratings. I got an **RMSE = 0.876**. This means the predicted ratings usually deviated by 0.876 points from the actual ratings. 
+I used a RMSE to asses the model's accuracy because RMSE looks at the average discrepancy between predicted and actual ratings. I got an **RMSE = 1.055**. 
 
-## Fairness Analysis
