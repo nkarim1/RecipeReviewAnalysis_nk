@@ -56,8 +56,8 @@ The bivariate analysis looked at the average rating based on the number of minut
 
 <iframe
   src="assets/prep_time_vs_ratings.html"
-  width="800"
-  height="600"
+  width="400"
+  height="400"
   frameborder="0"
 ></iframe>
 
